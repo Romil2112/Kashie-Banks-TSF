@@ -30,7 +30,7 @@
   include 'navbar.php';
 ?>
 
-<div class="container" style="background-color: #E5EEEA;">
+<div class="container" style="background-color: #38FFFF;">
         <h2 class="text-center pt-4">Transfer Money</h2>
         <br>
             <div class="row">
@@ -38,11 +38,11 @@
                     <div class="table-responsive-sm">
                     <table class="table table-hover table-sm table-striped table-condensed table-bordered">
                         <thead>
-                            <tr>
+                            <tr style="background-color:#33A8FF">
                             <th scope="col" class="text-center py-2">Id</th>
                             <th scope="col" class="text-center py-2">Name</th>
                             <th scope="col" class="text-center py-2">E-Mail</th>
-                            <th scope="col" class="text-center py-2">Phone</th>
+                            <th scope="col" class="text-center py-2">Phone  </th>
                             <th scope="col" class="text-center py-2">Balance</th>
                             <th scope="col" class="text-center py-2">Operation</th>
                             </tr>
@@ -51,7 +51,7 @@
                 <?php 
                     while($rows=mysqli_fetch_assoc($result)){
                 ?>
-                    <tr>
+                    <tr style="background-color:#33A8FF">
                         <td class="py-2"><?php echo $rows['id'] ?></td>
                         <td class="py-2"><?php echo $rows['name']?></td>
                         <td class="py-2"><?php echo $rows['email']?></td>
@@ -70,6 +70,9 @@
             </div> 
          </div>
          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>         
+        <footer class="text-center mt-5  py-1" style="background-color:#33FF46">
+        <p>Created by <b>ROMIL V. SHAH</b> <br> The Sparks Foundation </p>
+        </footer>
 </body>
 </html>

@@ -15,14 +15,14 @@
   include 'navbar.php';
 ?>
 
-	<div class="container" style="background-color: #E5EEEA;">
+	<div class="container" style="background-color: #33FFFF;">
         <h2 class="text-center pt-4">Transaction History</h2>
         
        <br>
        <div class="table-responsive-sm">
-    <table class="table table-hover table-striped table-condensed table-bordered">
+    <table class="table table-hover table-sm table-striped table-condensed table-bordered">
         <thead>
-            <tr>
+            <tr style="background-color:#33A8FF">
                 <th class="text-center">S.No.</th>
                 <th class="text-center">Sender</th>
                 <th class="text-center">Receiver</th>
@@ -43,12 +43,13 @@
             {
         ?>
 
-            <tr>
+            <tr style="background-color:#33A8FF">
             <td class="py-2"><?php echo $rows['sno']; ?></td>
             <td class="py-2"><?php echo $rows['sender']; ?></td>
             <td class="py-2"><?php echo $rows['receiver']; ?></td>
             <td class="py-2"><?php echo $rows['balance']; ?> </td>
             <td class="py-2"><?php echo $rows['datetime']; ?> </td>
+            </tr>
                 
         <?php
             }
@@ -61,5 +62,9 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <footer class="text-center mt-5  py-1" style="background-color:#33FF46">
+        <p>Created by <b>ROMIL V. SHAH</b> <br> The Sparks Foundation </p>
+        </footer>
+
 </body>
 </html>

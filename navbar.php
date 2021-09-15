@@ -8,16 +8,16 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="index.php"><h4>Home</h4></a>
+                <a class="nav-link" href="index.php"><h4><b>Home</b></h4></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="createuser.php"><h4>Create User</h4></a>
+                <a class="nav-link" href="createuser.php"><h4><b>Create User</b></h4></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="transfermoney.php"><h4>Transfer Money</h4></a>
+                <a class="nav-link" href="transfermoney.php"><h4><b>Transfer Money</b></h4></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="transactionhistory.php"><h4>Transaction History</h4></a>
+                <a class="nav-link" href="transactionhistory.php"><h4><b>Transaction History</b></h4></a>
               </li>
           </div>
        </nav>
