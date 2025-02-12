@@ -1,9 +1,16 @@
 <?php
 
-	$conn = mysqli_connect('localhost','id17597613_user_k','Rohil21@Kashie13','id17597613_kashie');
+	$conn = mysqli_connect(
+		getenv('DB_HOST'),
+		getenv('DB_USER'),
+		getenv('DB_PASS'),
+		getenv('DB_NAME')
+	);
 
 	if(!$conn){
-		die("Could not connect to the database due to the following error - ".mysqli_connect_error());
+		$error = "Database connection error: " . mysqli_connect_error();
+		error_log($error);
+		die("Could not connect to the database. Please try again later. Error: $error");
 	}
 
 ?>

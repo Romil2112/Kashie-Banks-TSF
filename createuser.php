@@ -8,7 +8,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = sanitize_input($_POST['name']);
     $email = sanitize_input($_POST['email']);
     $balance = floatval($_POST['balance']);
-    
+
+    // Input validation
+    if (empty($name) || empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL) || $balance < 0) {
+        json_response(false, 'Invalid input data.');
+        exit;
+    }
+
     $result = $transaction->createUser($name, $email, $balance);
     json_response($result['success'], $result['message']);
 }
