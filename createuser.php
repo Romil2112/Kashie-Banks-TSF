@@ -1,73 +1,146 @@
+<?php
+require_once 'includes/config.php';
+require_once 'includes/Transaction.php';
+
+$transaction = new Transaction();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = sanitize_input($_POST['name']);
+    $email = sanitize_input($_POST['email']);
+    $balance = floatval($_POST['balance']);
+    
+    $result = $transaction->createUser($name, $email, $balance);
+    json_response($result['success'], $result['message']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create User</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/table.css">
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="css/createuser.css">
+    <title>Create User - Kashie Bank</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/modern.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-<?php
-    include 'navbar.php';
-    include 'config.php';
-    if(isset($_POST['submit'])){
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $phone=$_POST['phone'];
-    $balance=$_POST['balance'];
-    $sql="insert into users(name,email,phone,balance) values('{$name}','{$email}',{$phone},'{$balance}')";
-    $result=mysqli_query($conn,$sql);
-    if($result){
-               echo "<script> alert('Hurray! User created');
-                               window.location='transfermoney.php';
-                     </script>";
-                    
-    }
-  }
-?>
+    <?php include 'navbar.php'; ?>
 
-        <h2 class="text-center pt-4">Create New User</h2>
-        <br>
+    <div class="container py-5 animate-fade-in">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="text-center mb-4">Create New User</h2>
+                        
+                        <form id="createUserForm" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required
+                                       pattern="[A-Za-z\s]+" minlength="2" maxlength="50">
+                                <div class="invalid-feedback">
+                                    Please enter a valid name (2-50 characters, letters only)
+                                </div>
+                            </div>
 
-  <div class="container">
-    <div class="screen"> 
-      <div class="screen-body">
-        <div class="screen-body-item left">
-          <img class="img-fluid" src="img/Card.jpg">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="balance" class="form-label">Initial Balance</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="balance" name="balance"
+                                           required min="0" step="0.01">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid amount
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-user-plus me-2"></i>Create User
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="screen-body-item">
-          <form class="app-form" method="post">
-            <div class="app-form-group">
-              <input class="app-form-control" placeholder="NAME" type="text" name="name" required>
-            </div>
-            <div class="app-form-group">
-              <input class="app-form-control" placeholder="EMAIL" type="email" name="email" required>
-            </div>
-            <div class="app-form-group">
-              <input class="app-form-control" placeholder="PHONE NUMBER" type="phone" name="phone" required>
-            </div>
-            <div class="app-form-group">
-              <input class="app-form-control" placeholder="BALANCE" type="number" name="balance" required>
-            </div>
-            <br>
-            <div class="app-form-group button">
-              <input class="app-form-button" type="submit" value="CREATE" name="submit"></input>
-              <input class="app-form-button" type="reset" value="RESET" name="reset"></input>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-        <footer class="text-center mt-5  py-1" style="background-color:#33FF46">
-        <p>Created by <b>ROMIL V. SHAH</b> <br> The Sparks Foundation </p>
-        </footer>
+
+    <!-- Toast for notifications -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('createUserForm');
+            const toast = new bootstrap.Toast(document.getElementById('notification'));
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (!form.checkValidity()) {
+                    e.stopPropagation();
+                    form.classList.add('was-validated');
+                    return;
+                }
+                
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch('createuser.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    document.querySelector('.toast-body').textContent = result.message;
+                    document.getElementById('notification').className = 
+                        `toast ${result.success ? 'bg-success' : 'bg-danger'} text-white`;
+                    
+                    if (result.success) {
+                        form.reset();
+                        form.classList.remove('was-validated');
+                    }
+                    
+                    toast.show();
+                } catch (error) {
+                    console.error('Error:', error);
+                    document.querySelector('.toast-body').textContent = 
+                        'An error occurred. Please try again.';
+                    document.getElementById('notification').className = 
+                        'toast bg-danger text-white';
+                    toast.show();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
