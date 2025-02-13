@@ -1,39 +1,88 @@
 # Kashie-Banks-TSF
 Kashie Banks - The Sparks Foundation Internship Project #1
 
-Basic Banking System : A Web Application used to transfer money between multiple users (Project contains 10 dummy users). A dummy user can also be created.
+## 🏦 Basic Banking System
 
-Front-end : HTML, CSS, Bootstrap & Javascript 
-Back-end  : PHP 
-Database  : MySQL
+A secure web application for transferring money between multiple users. The system comes pre-loaded with 10 dummy users and supports creation of new users.
 
-Database contains two Tables- Users Table & Transaction Table
+### 🛠️ Tech Stack
 
-  1. User table have basic fields such as name, email, phone number & current balance.
-  2. Transaction table records all transfers happened along with their time.
+- **Frontend:** HTML5, CSS3, Bootstrap 5, JavaScript
+- **Backend:** PHP 8
+- **Database:** MySQL
+- **Additional Libraries:** 
+  - DataTables for transaction history
+  - Select2 for enhanced dropdowns
+  - Font Awesome for icons
 
-Flow of the Website: Home Page > View all Users > Select and View one User > Transfer Money > Select reciever > View all Users > View Transfer History.
+### 💾 Database Structure
 
-## Installation Instructions
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Romil2112/Kashie-Banks-TSF.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd Kashie-Banks-TSF
-   ```
-3. Set up the database using the provided SQL scripts.
+#### Users Table
+- Name
+- Email
+- Phone Number
+- Current Balance
+- Timestamp
+- Unique identifiers
 
-## Usage Instructions
-1. Start the web server (e.g., XAMPP, WAMP).
-2. Access the application via a web browser at `http://localhost/Kashie-Banks-TSF`.
-3. Follow the flow: Home Page > View all Users > Select and View one User > Transfer Money > Select receiver > View all Users > View Transfer History.
+#### Transaction Table
+- Sender information
+- Receiver information
+- Amount transferred
+- Timestamp
+- Transaction status
+- Transaction reference
 
-## Security Considerations
-- Ensure that input data is validated and sanitized to prevent SQL injection.
-- Use prepared statements for database queries.
-- Implement HTTPS for secure data transmission.
+### 🔄 Website Flow
+1. Home Page
+2. View all Users
+3. Select and View one User
+4. Transfer Money
+5. Select receiver
+6. View all Users
+7. View Transfer History
 
-## Contributing
-If you would like to contribute to this project, please fork the repository and submit a pull request with your changes.
+### 🔒 Security Features
+
+1. **Data Protection**
+   - Prepared statements to prevent SQL injection
+   - Input validation and sanitization
+   - XSS protection through HTML escaping
+   - CSRF token implementation
+
+2. **Transaction Security**
+   - Atomic transactions with rollback support
+   - Double-entry accounting system
+   - Balance verification before transfers
+   - Transaction logging and audit trails
+
+3. **Error Handling**
+   - Secure error logging
+   - Custom error pages
+   - Graceful failure handling
+   - User-friendly error messages
+
+4. **Database Security**
+   - Encrypted sensitive data
+   - Secure connection handling
+   - Transaction isolation
+   - Audit logging for all operations
+
+5. **Application Security**
+   - Rate limiting for API endpoints
+   - Session management
+   - Secure headers implementation
+   - Input length restrictions
+
+### 🎯 Features
+
+- Real-time balance updates
+- Responsive design for all devices
+- Dark mode support
+- Interactive transaction history
+- Form validation with instant feedback
+- Toast notifications for actions
+- Modern and intuitive UI
+
+### 🌟 The Sparks Foundation
+This project was completed as part of The Sparks Foundation Graduate Rotational Internship Program (GRIP).
